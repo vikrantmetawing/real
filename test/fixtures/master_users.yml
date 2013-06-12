@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  master_user_id: 1
+  shop_name: MyString
+  password: MyString
+  master_email: MyString
+  validate: false
+
+two:
+  master_user_id: 1
+  shop_name: MyString
+  password: MyString
+  master_email: MyString
+  validate: false

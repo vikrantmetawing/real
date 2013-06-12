@@ -1,0 +1,99 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> 	<html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- General Metas -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	<!-- Force Latest IE rendering engine -->
+	<title> Login Form</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+	
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="css/layout.css">
+	<style>
+
+       body
+       {
+               background-image:
+               url('/images/back4.jpg');
+               background-size: cover; 
+              
+       }
+	  </style>
+	
+</head>
+<body>
+
+	
+		<% unless flash[:notice].nil? %>
+			<div class="heading_featured" >
+				<fieldset style="height: 35px; background-color: #FF0040;color: #FFFFFF;padding-top:10px">
+					<div align="center">
+						<font size="5" color="black"><p class="flash-msg"> <%= flash[:notice] %> </p></font>
+					</div>
+				</fieldset>
+			</div>
+		<% end %>
+			
+			
+			<div align="center" style=" height:50%; width:27%;padding-top:80px;margin-left:400px">
+				<fieldset style="background-color:#FFFFFF;height: 100px color: #000080; text-align: center;">
+				<p><font color=#000000><h1>
+				 Admin Login</h1>
+			</font></p>
+			</fieldset>
+			</div>
+			<div align="center" style=" height:100%; width:27%;margin-left:400px">
+	
+			
+			<%= form_tag("/real/admin/", :method=>"post") do %>
+			
+			
+		
+			<fieldset style="background-color:#FFFFFF;opacity: 0.8; height: 250px color: #000080; text-align: center;">
+
+			<br>
+			<br>
+			
+			
+			
+  
+		
+				<p><%= text_field_tag(:shopname,"Shop Name") %></p>
+				<p><%= text_field_tag(:password,"Password") %></p>
+				<label for="remember">
+				  <input type="checkbox" id="remember" value="remember" />
+				  <span>Remember me on this computer</span>
+				</label>
+				<br>
+				<%= submit_tag("login",  :value => "login", :class => "btn btn-primary btn btn-info" ) %>
+			<br>
+			<p class="forgot">Forgot your password?
+<br>			<a href="">Click here to reset it.</a></p>
+			<br>
+			</fieldset>
+			<% end %>
+		
+	   </div>
+	   
+	   
+
+	<!-- Primary Page Layout -->
+	
+
+	
+	
+</body>
+</html>

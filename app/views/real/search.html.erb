@@ -1,0 +1,191 @@
+<html>
+<body style="margin-top: 11%;">
+
+<% unless flash[:notice].nil? %>
+                       <div class="heading_featured" >
+                               <fieldset style="height: 35px; background-color: #FF0040;color: #FFFFFF;padding-top:10px">
+                                       <div align="center">
+                                               <font size="5"><p class="flash-msg"> <%= flash[:notice] %> </p></font>
+                                       </div>
+                               </fieldset>
+                       </div>
+               <% end %>
+	<div class="row" style="padding-right:20px;padding-left:10px;padding-top:10px;"> 
+	
+		
+		
+		<div style="float:left; width:25%; padding-left:2%" >
+			
+			<div class="wellside"style="background-color:#FBFBEF;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:10px">
+				<h4 class="side_heading">Filter</h4>
+				<hr style="margin:0px;">
+				<h4 class="side_heading">Browse by Category</h4>
+				<hr style="margin:0px;">
+				<div style="padding-top:10px;">
+					<ul class="nav nav-tabs nav-stacked">
+  
+						<li>
+							<%= link_to "Residential", {:controller => "real", :action => "search", :name => "Residential", :method => :post}%>
+						</li>
+						<li>
+							<%= link_to "Industrial", {:controller =>  "real", :action => "search", :name => "Industrial", :method => :post}%>
+						</li>
+						<li>
+							<%= link_to "Land", {:controller => "real", :action => "search", :name => "Land", :method => :post}%>
+						</li>
+						<li>
+							<%= link_to "Commercial", {:controller => "real", :action => "search", :name => "Commercial", :method => :post}%>
+						</li>
+
+						<li>
+							<a href="#">Foreclosures</a>
+						</li>
+						<li>
+							<a href="#"> Muiplex / Income Property</a>
+						</li>
+
+
+
+					</ul>
+				</div>
+			</div> 
+					<br><br>
+			
+			
+			
+			<div class="wellside"style="background-color:#FBFBEF;padding-left:20px;padding-right:20px;padding-top:20px;padding-bottom:20px">
+				<h4 class="side_heading">Filter</h4>
+				<hr style="margin:0px;">
+		
+				<div style="padding-top:10px;">
+		
+					<%= form_tag("/real/search/", :method=>"post") do %>
+				
+						<div class="controls">
+							<label class="checkbox" >
+								<%= check_box_tag  "rental_checkbox","rental" %>
+									Rental
+							</label>
+							<label class="checkbox">
+								<%= check_box_tag  'sale_checkbox','sale' %>
+				   
+									For Sale
+							</label>
+								<hr>
+				  
+				  
+							<label class="checkbox">
+								<%= check_box_tag  'condo_checkbox','condo' %>
+									Condo
+							</label>
+							<label class="checkbox">
+								<%= check_box_tag  'appartment_checkbox','appartment' %>
+									Apartment
+							</label> 
+							<label class="checkbox">
+								<%= check_box_tag  'duplex_checkbox','duplex' %>
+									Duplex
+							</label>
+							<label class="checkbox">
+								<%= check_box_tag  'triplex_checkbox','triplex' %>
+									Triplex
+							</label>
+
+							<div style="padding:20px;">
+			
+								<label>Bedrooms</label>
+									<input class="span1" type="text" placeholder="from"> to <input class="span1" type="text" placeholder="to">
+							</div>
+
+
+						</div>
+			  
+						<div class="caption">
+							
+				
+							<div class="form-actions">
+						
+								<%= submit_tag("submit",  :value => "goo",:class=>"btn btn-primary") %>
+						
+								
+							</div>
+						</div>
+			
+					<%end%>
+			
+				</div>
+			</div>
+			<br>
+			<div class="wellside"style="background-color:#FBFBEF;padding-left:20px;padding-right:20px;padding-top:10px;padding-bottom:10px"><h4 class="side_heading">Refine Search</h4>
+				<hr style="margin:0px;">
+				<div style="padding-top:10px;">
+					<form class="form-search">
+						<input type="text" class="input-medium search-query">
+						<button type="submit" class="btn btn-warning">Search</button>
+						
+					</form>
+				</div>
+				
+				<%if $adminflag=="tru" then %>
+				<div style="padding-top:10px;">
+					<%= form_tag("/real/admin_property_view/", :method=>"post") do %>
+						<%= submit_tag("viewall",  :value => "viewall",:class=>"btn btn-primary") %>	
+					<% end %>
+					<%= form_tag("/real/property_add/", :method=>"post") do %>
+						<%= submit_tag("addproperties",  :value => "addproperty",:class=>"btn btn-primary") %>	
+					<% end %>
+			
+					
+				</div>
+				<%end%>
+			</div>
+		</div>
+
+		<div>
+	   
+			<div id="container"style="float:right; width:70%;background-color:white">
+				<div class="wellside" style ="padding-left:3%;padding-top:1% ">
+					<div class="alert" style ="background-color:#A8A8A8">
+						<div class="page-schres">
+							<h4 style="color:white" >
+							
+   
+								<large style="color:00FFCC"> <%=@s%></large> Search Results for <%=@pt%>
+
+							</h4>
+						</div>
+					</div>
+				</div>	
+				<ul class="thumbnails" style="padding-left:3%">
+				
+				
+				<%@t.each do |i|%>
+  
+              
+					<li class="span2" >
+						<div id="image1" class="thumbnail"  style="background-color:#FFFFFF;">
+							
+							<%= link_to  "" %>
+							<%= link_to image_tag(i[7], :width => 225, :height => 175), :controller =>  "real",:action => 'listing', :id => @profile,:name => "Residential", :method => :post,:img=>i[7],:price=>i[2],:bed=>i[6],:nam=>i[1],:purpose=>i[5],:type=>i[4],:contant=>i[9],:p_id=>i[0]%>
+								<div class="caption">
+									<h4><%=link_to i[1], :controller =>  "real", :action => "listing", :id => @profile,:name => "Residential", :method => :post,:img=>i[7],:price=>i[2],:bed=>i[6],:nam=>i[1],:purpose=>i[5],:type=>i[4],:contant=>i[9],:p_id=>i[0]%></h4>
+									<p><%=truncate(i[9], :length => 25, :separator => ' ')%></p>
+									<br>
+									
+									
+								</div>
+						</div>
+					</li>
+				<%end%>
+				
+		</ul>
+		
+	
+			</div>
+		</div>
+	   
+	</div>
+
+
+</body>
+</html>

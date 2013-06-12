@@ -1,0 +1,42 @@
+<html>
+<head></head>
+<body style="margin-top: 11%;margin-left: 20px">
+	
+	<div class="row" style="height:500px; width:1000px;padding-bottom:20px">
+		<div class="span5" style="float:left;height:500px; width:700px;padding-bottom:20px">
+			<fieldset style="height: 500px;width:680px; background-color: #F7F2E0; color: #000000; border: 2px solid black;padding-left:20px">
+		<br>
+	
+	
+	<%= form_tag("/real/changepwd/", :method=>"put") do %>
+				<%= submit_tag("changepwd",  :value => "changepwd",:class=>"btn btn-link") %>	
+			<% end %>
+
+	
+	<%= form_tag("/real/addproperty/", :method=>"put") do %>
+				<%= submit_tag("addproperties",  :value => "addproperty",:class=>"btn btn-primary") %>	
+			<% end %>
+			
+	<%= form_tag("/real/deleteproperty/", :method=>"put") do %>
+				<%= submit_tag("deleteproperties",  :value => "deleteproperty",:class=>"btn btn-primary") %>	
+			<% end %>
+	
+	<%= form_tag("/real/addstory/", :method=>"put") do %>
+				<%= submit_tag("addstory",  :value => "addstory",:class=>"btn btn-primary") %>	
+			<% end %>
+	
+	
+	<%= form_tag("/real/addcontact/", :method=>"put") do %>
+				<%= submit_tag("addContact",  :value => "addcontact",:class=>"btn btn-primary") %>	
+			<% end %>
+		</fieldset>
+		
+	</div>
+	
+</div>
+	
+	
+	
+
+</body>
+</html>

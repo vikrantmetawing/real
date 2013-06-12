@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  c_name: MyString
+  string: MyString
+  phone: MyString
+  string: MyString
+  address: MyString
+  string: MyString
+  logo: MyString
+  string: MyString
+  slider_img_1: MyString
+  string: MyString
+  slider_img_2: MyString
+  string: MyString
+  slider_3: MyString
+  string: MyString
+  c_img_1: MyString
+  string: MyString
+  c_img_2: MyString
+  string: MyString
+
+two:
+  c_name: MyString
+  string: MyString
+  phone: MyString
+  string: MyString
+  address: MyString
+  string: MyString
+  logo: MyString
+  string: MyString
+  slider_img_1: MyString
+  string: MyString
+  slider_img_2: MyString
+  string: MyString
+  slider_3: MyString
+  string: MyString
+  c_img_1: MyString
+  string: MyString
+  c_img_2: MyString
+  string: MyString

@@ -1,0 +1,519 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<title> Real Estate </title>
+	<meta charset="utf-8" />
+	
+	<style>
+  .dumbBoxWrap { /* The div that shows/hides. */
+    display:none; /* starts out hidden */
+    z-index:40001; /* High z-index to ensure it appears above all content */
+}
+.dumbBoxOverlay { /* Shades out background when selector is active */
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-color:black;
+    opacity:.5; /* Sets opacity so it's partly transparent */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* IE transparency */
+    filter:alpha(opacity=50); /* More IE transparency */
+    z-index:40001;
+}
+.vertical-offset { /* Fixed position to provide the vertical offset */
+    position:fixed;
+    top:10%;
+    width:100%;
+    z-index:40002; /* ensures box appears above overlay */
+}
+.dumbBox { /* The actual box, centered in the fixed-position div */
+    width:350px; /* Whatever width you want the box to be */
+    position:relative;
+    margin:0 auto;
+    //Everything below is just visual styling */
+    background-color:white;
+    padding:10px;
+   
+}
+
+
+
+</style>
+<script type="text/javascript">
+    $(document).ready(function() {
+        //Show modal box
+        $('#openModal').click(
+            function() {$('.dumbBoxWrap').show();}
+        );
+        //Hide modal box
+        $('#closeModal').click(
+            function() {$('.dumbBoxWrap').hide();}
+        );
+    });
+</script>
+
+	
+	<!-- Stylesheets -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="css/realty.css" rel="stylesheet">
+	
+	</head>
+	
+	<body>
+	
+	<% unless flash[:notice].nil? %>
+			<div class="heading_featured" >
+				<fieldset style="height: 35px; background-color: #FF0040;color: #FFFFFF;padding-top:10px">
+					<div align="center">
+						<font size="5"><p class="flash-msg"> <%= flash[:notice] %> </p></font>
+					</div>
+				</fieldset>
+			</div>
+		<% end %>
+		<div class="site-wrapper">
+
+			<!-- HEADER
+			================================================== -->
+			
+			<div class="site-header index">
+				<div class="container">
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="span3">
+								<%= image_tag("/images/logo5.jpg", :width => 90, :height => 80) %>
+							</div>
+							<div class="span9">
+								<div class="nav" id="nav">
+									<input type='checkbox' id='toggle'/>
+									<label for='toggle' class='toggle'></label>
+								    <ul class="nav nav-right">
+									     <h3><i class="icon-user icon-white"></i><a id="openModal">Login</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+								        <i class="icon-user icon-white"></i><%=link_to "Signup", :controller => "real", :action => "fst", :name => "search", :id => @profile%></h3>
+								        
+								    </ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- CAROUSEL
+			================================================== -->
+			
+			<div id="myCarousel" class="carousel slide">
+			  <div class="carousel-inner">
+			    <div class="item active">
+			      <div class="container">
+			        <div class="carousel-caption">
+			          	<div class="row-fluid">
+				    		<div class="span12">
+				    			<div class="span6">
+				    				
+				    				<h1>Welcome to Real Estate World</h1>
+									<p>High ceilings, a wrap-around balcony, deluxe kitchen and both bedrooms have an ensuite.</p>
+									<div class="info-circle">
+										<div class="info-circle-icon-bed"></div>
+										<h3>5</h3>
+									</div>
+									<div class="info-circle">
+										<div class="info-circle-icon-bath"></div>
+										<h3>3</h3>
+									</div>
+									<div class="info-circle">
+										<div class="info-circle-icon-size"></div>
+										<h3>3500</h3>
+									</div>
+									<div class="carousel-button">
+										<div class="carousel-button-block"><p>Starting from $675,000. View details &rarr;</p></div>
+									</div>
+				    			</div>
+				    			<div class="span6">
+				    				<%= image_tag("/images/slide_01.png") %>
+				    			</div>
+				    		</div>
+				    	</div>
+			        </div>
+			      </div>
+			    </div>
+			    <div class="item">
+			      <div class="container">
+			        <div class="carousel-caption">
+			          <div class="row-fluid">
+			    		<div class="span12">
+			    			<div class="span6">
+			    				
+			    				<h1>Two Level Waterfront Residence</h1>
+								<p>This deluxe property offer's its new owners a modern and stylish split level apartment with direct entry off the Cove.</p>
+								<div class="info-circle">
+									<div class="info-circle-icon-bed"></div>
+									<h3>4</h3>
+								</div>
+								<div class="info-circle">
+									<div class="info-circle-icon-bath"></div>
+									<h3>3</h3>
+								</div>
+								<div class="info-circle">
+									<div class="info-circle-icon-size"></div>
+									<h3>4000</h3>
+								</div>
+								<div class="carousel-button">
+									<div class="carousel-button-block"><p>Starting from $350,000. View details &rarr;</p></div>
+								</div>
+			    			</div>
+			    			<div class="span6">
+			    				<%= image_tag("/images/slide_02.png") %>
+			    			</div>
+			    		</div>
+				    	</div>
+			        </div>
+			      </div>
+			    </div>
+			    <div class="item">
+			      <div class="container">
+			        <div class="carousel-caption">
+			          <div class="row-fluid">
+				    		<div class="span12">
+				    			<div class="span6">
+				    				
+				    				<h1>Where Quality, Design and Size Collide!</h1>
+									<p>Immersed in the vibrant East Perth lifestyle, this elevated urban retreat showcases resort style facilities.</p>
+									<div class="info-circle">
+										<div class="info-circle-icon-bed"></div>
+										<h3>2</h3>
+									</div>
+									<div class="info-circle">
+										<div class="info-circle-icon-bath"></div>
+										<h3>2</h3>
+									</div>
+									<div class="info-circle">
+										<div class="info-circle-icon-size"></div>
+										<h3>1500</h3>
+									</div>
+									<div class="carousel-button">
+										<div class="carousel-button-block"><p>Starting from $125, 000. View details &rarr;</p></div>
+									</div>
+				    			</div>
+				    			<div class="span6">
+				    				<%= image_tag("/images/slide_03.png") %>
+				    			</div>
+				    		</div>
+				    	</div>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			  <a class="left carousel-control" href="index.html/#myCarousel" data-slide="prev">&lt;</a>
+			  <a class="right carousel-control" href="index.html/#myCarousel" data-slide="next">&gt;</a>
+			</div><!-- /.carousel -->
+			
+			
+			<!-- INFORMATION BOX
+			================================================== -->
+			
+			<div class="content">
+				<div class="container">
+					<h1>Find the right home for your family</h1>
+					<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod lacinia laoreet. Vestibulum ultricies metus. </h4>
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="span4">
+								<div class="info-box">
+									<div class="container-top">
+										<div class="icon-home"></div>
+									</div>
+									<div class="container-body">
+										<h2>Stylish Homes</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod lacinia laoreet.</p>
+									</div>
+									<div class="container-footer">
+										<div class="button"><a href="#">Learn More</a></div>
+									</div>
+								</div>
+							</div>
+							<div class="span4">
+								<div class="info-box">
+									<div class="container-top">
+										<div class="icon-villa"></div>
+									</div>
+									<div class="container-body">
+										<h2>Beautiful Villas</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod lacinia laoreet.</p>
+									</div>
+									<div class="container-footer">
+										<div class="button"><a href="#">Learn More</a></div>
+									</div>
+								</div>
+							</div>
+							<div class="span4">
+								<div class="info-box">
+									<div class="container-top">
+										<div class="icon-townhouse"></div>
+									</div>
+									<div class="container-body">
+										<h2>Townhouse</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod lacinia laoreet.</p>
+									</div>
+									<div class="container-footer">
+										<div class="button"><a href="#">Learn More</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="span4">
+								<div class="info-box">
+									<div class="container-top">
+										<div class="icon-studio"></div>
+									</div>
+									<div class="container-body">
+										<h2>Studio Apartments</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod lacinia laoreet.</p>
+									</div>
+									<div class="container-footer">
+										<div class="button"><a href="#">Learn More</a></div>
+									</div>
+								</div>
+							</div>
+							<div class="span4">
+								<div class="info-box">
+									<div class="container-top">
+										<div class="icon-penthouse"></div>
+									</div>
+									<div class="container-body">
+										<h2>Penthouse</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod lacinia laoreet.</p>
+									</div>
+									<div class="container-footer">
+										<div class="button"><a href="#">Learn More</a></div>
+									</div>
+								</div>
+							</div>
+							<div class="span4">
+								<div class="info-box">
+									<div class="container-top">
+										<div class="icon-rural"></div>
+									</div>
+									<div class="container-body">
+										<h2>Rural Properties</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod lacinia laoreet.</p>
+									</div>
+									<div class="container-footer">
+										<div class="button"><a href="#">Learn More</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+			
+			<div class="clear"></div>
+			
+			<div class="content info-slider">
+				<div class="container">
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="span6">
+								<h1>Tips for Buying Your First Home</h1>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod lacinia laoreet. Vestibulum ultricies metus.</p>
+								<div class="row-fluid">
+									<div class="span6">
+										<div class="line-red space"></div>
+										<h2>Hire an Agent</h2>
+										<p>Agents often know of new listings coming up that are not yet on the market.</p>
+									</div>
+									<div class="span6">
+										<div class="line-red-light space"></div>
+										<h2>Get a Loan</h2>
+										<p>Popular first-time buyer loans are FHA loans because the minimum down payment requirement is much less than a conventional loan.</p>
+									</div>
+								</div>
+								<div class="row-fluid">
+									<div class="span6">
+										<div class="line-brown space"></div>
+										<h2>Negotiate Offer</h2>
+										<p>Your agent can give you a reasonable price range and help to manage your expectations.</p>
+									</div>
+									<div class="span6">
+										<div class="line-brown-light space"></div>
+										<h2>Home Inspection</h2>
+										<p>Sellers are generally not required to make repairs if problems are discovered during a home inspection.</p>
+									</div>
+								</div>
+							</div>
+							<div class="span6">
+								<%= image_tag("/images/villa.jpg") %>
+								<%= image_tag("/images/villa1.jpg") %>
+								<%= image_tag("/images/villa2.jpg", :width => 284) %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<br>
+	<br>
+	
+	 <%= form_tag("/real/master_signup/", :method=>"put") do %>
+		
+	
+		<tab id=t1><h1>&nbsp;&nbsp;&nbsp;&nbsp;Sign Up </h1>
+		
+		
+		<hr>
+		
+				
+		<br>
+		<br>
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;<%= text_field_tag(:name,"Shop Name") %>
+		
+		
+		<%= text_field_tag(:password,"password") %>
+		
+		
+		<%= text_field_tag(:confirmpassword,"Confirmpassword") %>
+		
+		<%= text_field_tag(:email,"Email") %><br/>
+		<br>
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;<%= submit_tag("upload",  :value => "upload", :class => "btn btn-large btn btn-info" ,  :onclick => "alert('Signup successfuly!')") %>
+		
+			
+		
+		<br>
+		<br>
+		
+		<% end %>
+		
+	
+	
+	
+	
+	
+	
+	
+			<!-- WIDGET: MEDIA
+			================================================== -->
+			
+			<div class="content widget-media">
+				<div class="container">
+					<div class="row-fluid">
+						<div class="span12 testimonial">
+							<div class="span6">
+								<%= image_tag("/images/testimonial.png") %>
+								<h2>Realty. provides the best service and had our house under contract very quickly. Great Job!</h2>
+								<p>Siralan Joshua, Malaysia</p>
+							</div>
+							<div class="span6 twitter">
+								<%= image_tag("/images/twitter.png") %>
+								<h2>Property market insights for 2013 is out! Download your copy here# today for free!</h2>
+								<p>posted by <b>@pixlstore</b> 35 minutes ago</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			
+			<!-- FOOTER
+			================================================== -->
+			
+			<div class="site-footer">
+				<div class="container">
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="span6">
+								<h3>Metawing <span>&copy; 2013</span></h3>
+								<div class="space"></div>
+								<p>We are one of the largest property managers in the region, managing approximately 120,000 properties valued at over U$50 billion.</p>
+								<div class="space"></div>
+								<p><a href="https://www.facebook.com/metawing?fref=ts"><%= image_tag("/images/social.png") %> </a>
+								<a href="#"><%= image_tag("/images/social-twitter.png") %></a>
+								<a href="#"> <%= image_tag("/images/social-google.png") %></a>
+								<a href="#"><%= image_tag("/images/social-vimeo.png") %> </a></p>
+							</div>
+							<div class="span3">
+								<h3>Sitemap</h3>
+								<div class="space"></div>
+								<p><a href="sell.html">Sell a Property</a></p>
+								<p><a href="buying-tips.html">Buying Tips</a></p>
+								<p><a href="about.html">About</a></p>
+								<p><a href="contacts.html">Contacts</a></p>
+							</div>
+							<div class="span3">
+								<h3>Property</h3>
+								<div class="space"></div>
+								<p><a href="buy.html">Buy</a></p>
+								<p><a href="rent.html">Rent</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- END SITE-WRAPPER -->
+		</div>
+		
+		<!-- Javascripts
+		================================================== -->
+		
+		
+		<script>
+		  !function ($) {
+		    $(function(){
+		      // carousel demo
+		      $('#myCarousel').carousel()
+		    })
+		  }(window.jQuery)
+		</script>
+		
+		<div class="dumbBoxWrap">
+    <div class="dumbBoxOverlay">
+        &nbsp;
+    </div>
+    <div class="vertical-offset">
+        <div class="dumbBox">
+			<div class= "row">
+				<div style="float:right">
+					<a id="closeModal"><img src="/images/modal_close.png"/></a>
+				</div>
+				<div style ="float:left">   
+					
+					
+					<%= form_tag("/real/admin/", :method=>"post") do %>
+				
+					<fieldset style="height: 250px;width:300px; background-color: #EFFBF5; color: #000000; border: 2px solid black;padding-left:20px">
+					<br>
+					<h3> Enter Login Details</h3>
+					<br>
+				
+					<label class="control-label">
+						Email
+					</label>
+					<%= text_field_tag(:email,"") %><br/>
+				
+					<label class="control-label">
+						Password
+					</label>
+					<%= password_field_tag(:email,"") %><br/>
+					<%= submit_tag("submit",   :value => "submit",:class=>"btn btn-primary" ) %>		
+					
+					<br>
+					<br>
+					</fieldset>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+		
+	</body>
+</html>
+

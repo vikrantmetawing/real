@@ -1,0 +1,118 @@
+<html>
+<body style="margin-top: 75px; background-image: "/images/b.jpg";>
+<% unless flash[:notice].nil? %>
+                       <div class="heading_featured" >
+                               <fieldset style="height: 35px; background-color: #FF0040;color: #FFFFFF;padding-top:10px">
+                                       <div align="center">
+                                               <font size="5"><h2> <%= flash[:notice] %> </h2></font>
+                                       </div>
+                               </fieldset>
+                       </div>
+               <% end %>
+<div class="row">
+   
+       <div class="span8" >
+               <div id="myCarousel" class="carousel slide" style="margin-top: 30px;margin-left:10px;">
+                       <!-- Carousel slides -->
+                       <div class="carousel-inner">
+                               <div class="active item">
+                                       <%= image_tag($slider_1, :width => 600, :height =>500) %>
+                               </div>
+                               <div class="item">
+                                       <%= image_tag($slider_2, :width => 600, :height => 500) %>
+                               </div>
+                               <div class="item">
+                                      <%= image_tag($slider_3, :width => 600, :height => 500) %>
+                               </div>
+                       
+                       </div>
+
+                       <!-- Carousel nav -->
+                       <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+                       <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+               </div>
+
+       </div>  
+
+	   <div  style="margin-top: 30px;margin-left:90px;padding-left:20px">
+   
+			<%= form_tag("/real/search/", :method=>"post") do %>
+				<fieldset style="height: 485px; background-color: #EFFBF5; color: #000080;width: 346px; text-align: center;border: 2px solid black">
+					<br><br><h4><i style="padding-right:10px;margin-top:3px"class="icon-search"></i> Browse Properties  </h4>
+					<hr><%= text_field_tag(:state,"State") %><br/>  
+					<%= text_field_tag(:i,"Property_ID") %><br/>
+					
+					<%= select(:price, :item_type, [["Price Range ", 1],["$100k-$300", 2], ["$300k-$600", 3], ["$600k-$900", 4], ["$900+", 5]], {}, :class => "myclass") %><br>	
+					<%= select(:bed_room, :item_type, [['Bed Room ', 1], ['1', 2], ['2', 3],  ['3', 4],['4+', 5]], {}, :class => "myclass") %><br>			
+					<%= select(:property_type, :item_type, [['Property Type', 1], ['Commercial', 2], ['Industrial', 3], ['Land', 4],['Residential', 5]], {}, :class => "myclass") %><br>
+					<%$flag="true"%>
+					<%= submit_tag("submit",:value =>"Submit", :class=>"btn btn-success") %>
+				</fieldset>
+			<% end %>
+  
+ 
+
+
+
+
+	   </div>
+	   
+			
+   </div>  
+   <div class="heading_featured" ><fieldset style="height: 45px; background-color: #FF0040;color: #FFFFFF;padding-top:10px">
+   
+<h4><i class="icon-star-empty icon-white"></i>Latest Properties</h4></fieldset> </div>
+</br></br>
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   <div id="container" style="width:1000px;padding-left:20px">
+  
+  
+   <ul class="thumbnails">
+   <%b=0%>
+   <%@t.each do |i|%>
+   <%b=b+1%>
+					<li class="span3">
+						<div id="image1" class="thumbnail"  style="background-color:#FFFFFF;>
+							<%= link_to  "" %>
+								<%= link_to image_tag(i[7], :width => 225, :height => 175), :controller => "real",:action => 'listing', :id => @profile,:name => "Residential", :method => :post,:img=>i[7],:price=>i[2],:bed=>i[6],:nam=>i[1],:purpose=>i[5],:type=>i[4],:contant=>i[9],:p_id=>i[0]%>
+								<div class="caption">
+									<h4><%=link_to i[1], :controller => "real", :action => "listing", :id => @profile,:name => "Residential", :method => :post,:img=>i[7],:price=>i[2],:bed=>i[6],:nam=>i[1],:purpose=>i[5],:type=>i[4],:contant=>i[9],:p_id=>i[0]%></h4>
+									<p><%=truncate(i[9], :length => 25, :separator => ' ')%></p>
+									<br>
+								</div>
+						</div>
+					</li>
+					<%break if b==4%>
+  <%end%>
+   
+
+</ul>
+
+  </div>
+   
+   
+   
+</body>
+
+</html>

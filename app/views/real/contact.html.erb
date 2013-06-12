@@ -1,0 +1,227 @@
+  <html>
+  <head>
+  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+</script>
+
+<script>
+function initialize()
+{
+var mapProp = {
+  center:new google.maps.LatLng(51.508742,-0.120850),
+  zoom:5,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+var map=new google.maps.Map(document.getElementById("googleMap")
+  ,mapProp);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+  </head>
+<body style="margin-top: 60px;">
+<% unless flash[:notice].nil? %>
+                       <div class="heading_featured" >
+                               <fieldset style="height: 35px; background-color: #FF0040;color: #FFFFFF;padding-top:10px">
+                                       <div align="center">
+                                               <font size="5"><p class="flash-msg"> <%= flash[:notice] %> </p></font>
+                                       </div>
+                               </fieldset>
+                       </div>
+               <% end %>
+	<div class="row" style="height:70%; width:100%;">
+	   <div style="float:left;height:100%; width:67%;padding-left:3%">
+	   <br>
+	   <br>
+	   <br>
+	   <br>
+	    <h1><A HREF="#requirement"><font color="black"><i class="icon-user icon-white">Post Your Requirements</i></font></A></h1>
+			<%= form_tag("/real/contact/", :method=>"post") do %>
+			
+			 <fieldset style="height: 100%;width:100%; background-color:; color: #000000; border: 2px solid black;padding-left:20px;background-image:
+		url('/images/back1.jpg')">
+			<br>
+			<br>
+			<br>
+			<br>
+		
+			<tab id=t1><h1>Contact Page <small>get in touch with us</small></h1>
+			<hr>
+			<br>
+			<br>
+			<tab id=t1><h5><%=$c_contant%></h5>
+			<br>
+			<br>
+			 <label class="control-label">
+			Name
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:name,"") %><br/>
+			
+			<label class="control-label">
+			Email
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:email,"") %><br/>
+			
+			<label class="control-label">
+			Phone
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:phone,"") %><br/>
+			
+			<label class="control-label" for="textarea">
+			Message
+			<span class="required">*</span>
+			</label>
+			<div class="controls">
+			<TEXTAREA NAME="message" COLS=40 ROWS=5></TEXTAREA>
+			</div>
+			<%= submit_tag("submit",  :value => "submit",:class=>"btn btn-primary") %>		
+			
+			<br>
+			<br>
+			
+			
+			
+			</fieldset>
+			<% end %>
+			
+		</div>
+
+
+		<div  style="float:right;height:100%; width:25%;">
+			<fieldset style="height:100%;width:100%; background-color: ; color: #000000; border: 2px solid black;background-image:
+		url('/images/back1.jpg')">
+			
+			<div >
+				<div class="wellside" style="height:10%;">
+				<br>
+				<h4 class="side_heading" style="padding-left:25%">Team</h4>
+				<ul class="thumbnails" style="padding:15%;">
+					<li >
+						<div class="thumbnail " style ="background-color:white">
+							<%= image_tag("/images/abc.jpg", :width => 200, :height => 200) %>
+							<div class="caption">
+								<h5>Rohit Rathore</h5>
+								<br>
+								<p>President</p>
+							</div>
+						</div>
+					</li>
+					<li >
+						<div class="thumbnail" style ="background-color:white">
+							<%= image_tag("/images/a.jpg", :width => 200, :height => 200) %>
+							<div class="caption">
+							<h5>Mike Thompson</h5>
+							<br>
+							<p>Vice President</p>
+							
+							
+					
+
+						</div>
+						
+				
+					</li>
+				</ul>
+				<%if $adminflag=="true" then %>
+					<%= form_tag("/real/contaview/", :method=>"put") do %>
+						<%= submit_tag("viewall",  :value => "viewall",:class=>"btn btn-primary") %>	
+					<% end %>
+			
+				<%end%>
+			</div>
+			</fieldset>
+		
+		</div>
+		<A NAME="requirement">
+ <div style="float:left;height:100%; width:67%;padding-left:3%">
+
+			<%= form_tag("/real/contactmail/", :method=>"post") do %>
+			
+			 <fieldset style="height: 100%;width:100%; background-color:; color: #000000; border: 2px solid black;padding-left:20px;background-image:
+		url('/images/back1.jpg')">
+			<br>
+			<br>
+			<br>
+			<br>
+		
+			<tab id=t1><h2>Mail Your Requirements to us</h2>
+			<hr>
+			
+			
+			 <label class="control-label">
+			Name
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:name,"") %><br/>
+			
+			<label class="control-label">
+			Email
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:email,"") %><br/>
+			
+			<label class="control-label">
+			Phone
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:phone,"") %><br/>
+			
+			
+			<label class="control-label">
+			Property Type
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:propertytype,"") %><br/>
+			
+			<label class="control-label">
+			Sub Property Type
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:subpropertytype,"") %><br/>
+			
+			<label class="control-label">
+			Purpose
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:purpose,"") %><br/>
+			<label class="control-label">
+			Bed Room
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:bedroom,"") %><br/>
+			<label class="control-label">
+			Price Limit
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:price,"") %><br/>
+			<label class="control-label">
+			Location
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:location,"") %><br/>
+			
+			
+			<%= submit_tag("send",  :value => "send",:class=>"btn btn-primary") %>		
+			
+			<br>
+			<br>
+			
+			
+			
+			</fieldset>
+			<% end %>
+			
+		</div>
+
+		
+
+	
+	</div>
+<div  style="padding-left:1%">
+<div id="googleMap" style="height:500px; width:98%;border: 2px solid black;"></div></div>
+
+
+</body>
+</html>

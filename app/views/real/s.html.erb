@@ -1,0 +1,15 @@
+
+<html>
+<body style="margin-top: 11%; background-image: "/images/b.jpg";>
+<% unless flash[:notice].nil? %>
+                       <div class="heading_featured" >
+                               <fieldset style="height: 35px; background-color: #FF0040;color: #FFFFFF;padding-top:10px">
+                                       <div align="center">
+                                               <font size="5"><h2> <%= flash[:notice] %> </h2></font>
+                                       </div>
+                               </fieldset>
+                       </div>
+               <% end %>
+			   
+</body>
+</html>

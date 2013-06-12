@@ -1,0 +1,60 @@
+<html>
+<head></head>
+<body style="margin-top: 11%;margin-left: 20px">
+
+
+
+	<br>
+	<br>
+	
+	
+	
+
+		
+		<div style="height:850px;width:970px;background-color:">  
+			<div id="container" style="height:800px;width:650px;padding-left:20px;padding-bottom:20px;background-color:#FBFBEF;">
+				<div class="wellside">
+					<div class="alert">
+						<div class="page-schres">
+							<h2>
+								Story
+								
+								
+
+							</h2>
+						</div>
+					</div>
+				</div>		
+				<div style="padding-left:10px;padding-right:10px;padding-bottom:20px;background-color:; ">
+				
+				 <%= form_tag("/real/adminstorydelete/", :method=>"post") do %>
+                                       <% if $adminflag=="true"%>
+									  
+                                               <span style="font-size:23px; padding:10px; float:right;" class="label label-warning"><%=link_to " Delete ", :controller => "real", :action => "adminstorydelete", :id => @profile,:name => "deletestory", :method => :post,:s_id=>@s_id%></span>       
+                                       <%end%>
+                                       
+                                       
+									  
+                                       <% if $userflag=="true"%>
+                                               <% if $userid== @u_id%>
+                                               <span style="font-size:23px; padding:10px; float:right;" class="label label-warning"><%=link_to "  Delete", :controller => "real", :action => "adminstorydelete", :id => @profile,:name => "deletestory", :method => :post,:s_id=>@s_id%></span>       
+                                               <%end%>
+                                       <%end%>
+                                       
+                               <%end%>
+				
+				<%@t.each do |i|%>
+			
+				<label class="control-label">Name</label> <h3><%= i[2]%></h3>
+				<label class="control-label">Email</label> <h3><%= i[3]%></h3>
+				<label class="control-label">Phone</label> <h3><%= i[4]%></h3>
+				<label class="control-label">Story</label> <h3><%= i[5]%></h3>
+				<%end%>
+				
+				 
+				
+				</div>
+			</div>
+		</div>
+</body>
+</html>

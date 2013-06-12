@@ -1,0 +1,92 @@
+ 
+  <html>
+  <head>
+  </head>
+	<body style="margin-top: 11%;">
+
+<div class="row" style="height:70%; width:100%;">
+   <div style="float:left;height:100%; width:67%;padding-left:3%;">
+   
+	
+		<%= form_tag({ controller:$master_user_name, :action => 'admin_home'}, :multipart => true) do %>
+		
+			<fieldset style="height: 100%;width:100%; background-color: ; color: #000000; border: 2px solid black;padding-left:20px;background-image:
+			url('/images/back1.jpg');">
+			<br>
+			<br>
+			<br>
+			<br>
+	
+			<tab id=t1><h1>Home details  <small>fill details to customize your store </small></h1></tab>
+			<hr>
+			<br>
+			<br>
+			<tab id=t1><h5>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta t.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta t.</h5>
+			<br>
+			<br>
+			
+			<label class="control-label">
+			 Company Name
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:name,"") %><br/>
+		
+			<label class="control-label">
+			Address
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:email,"") %><br/>
+			
+			<label class="control-label">
+			Phone
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:phone,"") %><br/>
+		
+			<label class="control-label" for="textarea">
+			About your company
+			<span class="required">*</span>
+			</label>
+			<div class="controls">
+			<TEXTAREA NAME="story" COLS=40 ROWS=5></TEXTAREA>
+		
+		
+			<p><label for="Upload_image">Select Slider_image_1</label>
+			<%= file_field 'upload1', 'file1' %></p>
+
+		<p><label for="Upload_image">Select Slider_image_2</label>
+			<%= file_field 'upload2', 'file2' %></p>
+			
+		<p><label for="Upload_image">Select Slider_image_3</label>
+			<%= file_field 'upload3', 'file3' %></p>
+			
+		<p><label for="Upload_image">Select Company_Logo_image</label>
+			<%= file_field 'upload4', 'file4' %></p>
+<p><label for="Upload_image">Select Company_image_1</label>
+			<%= file_field 'upload5', 'file5' %></p>
+
+			<p><label for="Upload_image">Select Company_image_2</label>
+			<%= file_field 'upload6', 'file6' %></p>
+
+		
+			</div>
+			<%= submit_tag("submit", :value => "submit", :class=>"btn btn-primary") %>
+		 <%= submit_tag("preview", :value => "preview", :class=>"btn btn-primary") %>
+			<br>
+			<br>
+		
+		
+		
+			</fieldset>
+			<% end %>
+			
+			
+			
+	</div>
+
+</div>
+
+
+</body>
+</html>
+ 

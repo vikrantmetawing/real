@@ -1,0 +1,63 @@
+<html>
+<head></head>
+<body style="margin-top: 11%;margin-left: 20px">
+<% unless flash[:notice].nil? %>
+                       <div class="heading_featured" >
+                               <fieldset style="height: 35px; background-color: #FF0040;color: #FFFFFF;padding-top:10px">
+                                       <div align="center">
+                                               <font size="5"><h2> <%= flash[:notice] %> </h2></font>
+                                       </div>
+                               </fieldset>
+                       </div>
+               <% end %>
+
+<div class="row" style="height:500px; width:700px;padding-bottom:20px">
+   <div class="span5" style="float:left;height:500px; width:700px;">
+		<%= form_tag("/real/admin/", :method=>"post") do %>
+		
+		 <fieldset style="height: 500px;width:500px; background-color: #F7F2E0; color: #000000; border: 2px solid black;padding-left:20px">
+		<br>
+		<br>
+		<br>
+		<br>
+	
+		<tab id=t1><h1>Change Password </h1>
+		<hr>
+		
+				
+		<br>
+		<br>
+		 <label class="control-label">
+		Current Password
+		<span class="required">*</span>
+		</label>
+		<%= password_field_tag(:currentpwd,"") %><br/>
+		
+		<label class="control-label">
+		New Password
+		<span class="required">*</span>
+		</label>
+		<%= password_field_tag(:newpwd,"") %><br/>
+		
+		
+	
+
+		
+		<br>
+		
+		
+		<%= submit_tag("upload",  :value => "upload",:class => "btn btn-primary") %>		
+		
+		<br>
+		<br>
+		
+		
+		
+		</fieldset>
+		<% end %>
+		
+	</div>
+</div>
+		
+</body>
+</html>

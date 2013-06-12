@@ -1,0 +1,323 @@
+ <html>
+  
+  <head>
+  
+  <script src="scripts/global.js">
+</script>
+  
+<script src="scripts/photos.js">
+</script>
+  
+ <script> 
+  function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      oldonload();
+      func();
+    }
+  }
+}
+
+function insertAfter(newElement,targetElement) {
+  var parent = targetElement.parentNode;
+  if (parent.lastChild == targetElement) {
+    parent.appendChild(newElement);
+  } else {
+    parent.insertBefore(newElement,targetElement.nextSibling);
+  }
+}
+
+function addClass(element,value) {
+  if (!element.className) {
+    element.className = value;
+  } else {
+    newClassName = element.className;
+    newClassName+= " ";
+    newClassName+= value;
+    element.className = newClassName;
+  }
+}
+
+function highlightPage() {
+  if (!document.getElementsByTagName) return false;
+  if (!document.getElementById) return false;
+  if (!document.getElementById("navigation")) return false;
+  var nav = document.getElementById("navigation");
+  var links = nav.getElementsByTagName("a");
+  for (var i=0; i<links.length; i++) {
+    var linkurl = links[i].getAttribute("href");
+    var currenturl = window.location.href;
+    if (currenturl.indexOf(linkurl) != -1) {
+      links[i].className = "here";
+      var linktext = links[i].lastChild.nodeValue.toLowerCase();
+      document.body.setAttribute("id",linktext);
+    }
+  }
+}
+
+addLoadEvent(highlightPage);
+
+</script>
+
+<script>
+
+function showPic(whichpic) {
+  if (!document.getElementById("placeholder")) return true;
+  var source = whichpic.getAttribute("href");
+  var placeholder = document.getElementById("placeholder");
+  placeholder.setAttribute("src",source);
+  if (!document.getElementById("description")) return false;
+  if (whichpic.getAttribute("title")) {
+    var text = whichpic.getAttribute("title");
+  } else {
+    var text = "";
+  }
+  if(placeholder && placeholder.style) {
+    placeholder.style.height = '600px';
+    placeholder.style.width = '700px';
+}
+  var description = document.getElementById("description");
+  if (description.firstChild.nodeType == 3) {
+    description.firstChild.nodeValue = text;
+  }
+  return false;
+}
+
+function preparePlaceholder() {
+  if (!document.createElement) return false;
+  if (!document.createTextNode) return false;
+  if (!document.getElementById) return false;
+  if (!document.getElementById("imagegallery")) return false;
+  var placeholder = document.createElement("img");
+  placeholder.setAttribute("id","placeholder");
+  placeholder.setAttribute("src","images/placeholder.gif");
+  placeholder.setAttribute("alt","my image gallery");
+  var description = document.createElement("p");
+  description.setAttribute("id","description");
+  var desctext = document.createTextNode("Choose an image");
+  description.appendChild(desctext);
+  var gallery = document.getElementById("imagegallery");
+  insertAfter(description,gallery);
+  insertAfter(placeholder,description);
+}
+
+function prepareGallery() {
+  if (!document.getElementsByTagName) return false;
+  if (!document.getElementById) return false;
+  if (!document.getElementById("imagegallery")) return false;
+  var gallery = document.getElementById("imagegallery");
+  var links = gallery.getElementsByTagName("a");
+  for ( var i=0; i < links.length; i++) {
+    links[i].onclick = function() {
+      return showPic(this);
+    }
+  }
+}
+
+addLoadEvent(preparePlaceholder);
+addLoadEvent(prepareGallery);
+</script>
+
+  </head>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+<body style="margin-top: 11%;margin-left: 20px">
+
+
+<div class="row" style="height:1280px; width:1000px;">
+   <div class="span5" style="float:left;height:1200px; width:700px;">
+   <br>
+   
+   <fieldset style="height: 1250px;width:700px; background-color: #F7F2E0; color: #000000; border: 2px solid black;">
+		<br>
+		<br>
+		<tab id=t1><h2><%=@name%>  
+			
+		<span style="font-size:23px; padding:10px; float:right;" class="label label-success">$<%=@price%></span>
+		
+		
+		</h2>
+		<hr>
+		
+		<br>	
+		<%if $userflag=="true"%>		
+			<span style="font-size:23px; padding:10px; float:right;" class="label label-warning"><%=link_to "add to list", :controller => "real", :action => "homesearch", :id => @profile,:name => "Residential", :method => :post,:p_id=>@p_id%></span>	
+		<%end%>	
+		<br>
+		<br>
+		<div id="content">
+			<ul id="imagegallery">
+    
+	  <div>
+
+			<a href=<%=@img%>>
+			</div>
+			 <div style="padding-right:100px;" >
+			 <table class="table table-striped" style="width:300px; background-color:#A9A9F5; color: #000000; border: 2px solid black;float:right;"> 
+				<tr class="success">
+					<td>Features</td>
+					<td></td>
+					
+				</tr>
+				<tr >
+					<td>Property Name</td>
+					<td><%=@name%></td>
+				</tr>
+				<tr class="warning">
+					<td>Property Type</td>
+					<td><%=@type%></td>
+				</tr>
+				<tr>
+					<td>Purpose</td>
+					<td><%=@purpose%></td>
+				</tr>
+				<tr class="warning">
+					<td>Bedroom</td>
+					<td><%=@bed%> </td>
+				</tr>
+			</table></div>
+			
+		
+			<%= image_tag(@img, :width => 150, :height => 150)%>
+			
+			</a>
+      
+      
+			
+			</ul>
+	
+		</div>	
+<br>
+	
+<%if $userflag=="true"%>
+ <%=link_to "intrested", :controller => "real", :action => "senddetails", :id => @profile,:name => "intrested", :method => :post,:img=>@img,:price=>@price,:bed=>@bed,:nam=>@name,:type=>@type,:contant=>@contant,:purpose=>@purpose,:p_id=>@p_id%></h4>
+ 
+		<%end%>
+		<%= form_tag("/real/proplist/", :method=>"post") do %>
+                       <% if $userflag=="true" then %>
+                             <% if @click=="saved_properties" then %>
+									<span style="font-size:23px; padding:10px; float:right;" class="label label-warning"><%=link_to "Delete", :controller => "real", :action => "proplist", :id => @profile,:name => "deleteproperty", :method => :post,:p_id=>@p_id%></span>        
+							  <% end %>
+					   <% end %>
+                       <% if $adminflag=="tru"%>
+                               <span style="font-size:23px; padding:10px; float:right;" class="label label-warning"><%=link_to "Delete", :controller => "real", :action => "proplist", :id => @profile,:name => "admindeleteproperty", :method => :post,:p_id=>@p_id%></span>        
+                       <%end%>
+               <%end%>
+		<br>
+		<h3>Description</h3>
+		<hr>
+		
+		<div style="border:  3px dotted gray; ;margin-left: 20px; margin-right: 20px">
+			<p>
+			<%=@contant%>
+			</p>
+		</div>
+		
+	</fieldset>
+</div>
+   
+   <div class="span3" style="float:left;height:750px; width:250px; margin-top: 20px;">
+		
+		<fieldset style="height: 200px;width:250px; background-color: #F7F2E0;border: 2px solid black;">
+		<div class="nav nav-tabs nav-stacked" style="background:#F2F2F2; font-size:11px;">
+		
+		<li class="active" style="font-size:14px; font-weight:bold; ">
+		<a href="#">Explore</a>
+		</li>
+		
+		<li>
+		<a href="#"><font color="#000000"><i style="padding-right:10px; margin-top:2px" class="icon-envelope"></i>Email this Listing</font></a>
+		</li>
+		
+		<li>
+		<a href="#"><font color="#000000"><i style="padding-right:10px; margin-top:2px" class="icon-print"></i>Print Listing</font></a>
+		</li>
+
+		<li>
+		<a href="#"><font color="#000000"><i style="padding-right:10px; margin-top:2px" class="icon-star"></i>Add to Favourites</font></a>
+		</li>
+		
+		<li>
+		<a href="#"><font color="#000000"><i style="padding-right:10px; margin-top:2px" class="icon-search"></i>View Similar Properties</font></a>
+		</li>
+
+		
+		</div>
+		</fieldset>
+		<br>
+		<br>
+		<br>
+		
+		<fieldset style="height: 500px;width:250px; background-color: #F7F2E0;border: 2px solid black;">
+		
+		<div class="span5" style="float:left;height:500px; width:300px; padding-bottom:20px">
+			<%= form_tag("/real/contact/", :method=>"post") do %>
+			 <h3>Contact</h3>
+			 <br>
+			<label class="control-label">
+			Name
+			<span class="required">*</span>
+			</label>
+			<%= text_field_tag(:name,"") %><br/>
+		
+		<label class="control-label">
+		Email
+		<span class="required">*</span>
+		</label>
+		<%= text_field_tag(:email,"") %><br/>
+		
+		<label class="control-label">
+		Phone
+		<span class="required">*</span>
+		</label>
+		<%= text_field_tag(:phone,"") %><br/>
+		
+		<label class="control-label" for="textarea">
+		Message
+		<span class="required">*</span>
+		</label>
+		<div class="controls">
+		<TEXTAREA NAME="message" COLS=40 ROWS=5></TEXTAREA>
+		</div>
+		<%= submit_tag("submit",  :value => "submit",:class=>"btn btn-primary") %>		
+		
+		<%end%>		
+		</div>
+		</fieldset>
+		
+		
+		<fieldset style="height: 300px;width:250px; background-color: #F7F2E0;border: 2px solid black;">
+		<div class="span5" style="float:left;height:350px; width:300px;">
+		<span class="label">Note</span>
+		<br>
+		<br>
+			<div class="span5" style="float:left;height:250px; width:210px;">
+			<p> Lorem Ipsum is simply dummy text of the printing .Lorem Ipsum is simply dummy text of the printingLorem Ipsum is simply dummy text Lorem Ipsum is simply dummy text of the printing .Lorem Ipsum is simply dummy text of the printing .Lorem Ipsum is simply dummy text of the printing .
+			</p>
+			</div>
+		</div>
+		</fieldset>
+		
+	
+		
+		
+   </div>
+   
+</div>
+
+
+ 
+
+
+</body>
+</html>

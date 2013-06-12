@@ -1,0 +1,75 @@
+
+  <html>
+  <head>
+ 
+  </head>
+<body style="margin-top: 11%;margin-left: 20px">
+<% unless flash[:notice].nil? %>
+                       <div class="heading_featured" >
+                               <fieldset style="height: 35px; background-color: #FF0040;color: #FFFFFF;padding-top:10px">
+                                       <div align="center">
+                                               <font size="5"><p class="flash-msg"> <%= flash[:notice] %> </p></font>
+                                       </div>
+                               </fieldset>
+                       </div>
+               <% end %>
+ 
+
+<div class="row" style="height:500px; width:700px;padding-bottom:20px">
+   <div class="span5" style="float:left;height:500px; width:700px;">
+	
+		
+		 <fieldset style="height: 500px;width:500px; background-color: #F7F2E0; color: #000000; border: 2px solid black;padding-left:20px">
+		 <%= form_tag("/real/usersignup/", :method=>"put") do %>
+		<br>
+		<br>
+		
+		<tab id=t1><h1>Sign Up </h1>
+		<%=@last%>
+		
+		<hr>
+		
+				
+		<br>
+		<br>
+		 <label class="control-label">
+		Name
+		<span class="required">*</span>
+		</label>
+		<%= text_field_tag(:name,"") %><br/>
+		 <label class="control-label">
+		Email Id
+		<span class="required">*</span>
+		</label>
+		<%= text_field_tag(:email,"") %><br/>
+		<label class="control-label">
+		Password
+		<span class="required">*</span>
+		</label>
+		<%= password_field_tag(:password,"") %><br/>
+		
+		
+		<label class="control-label">
+		 Confirm Password
+		<span class="required">*</span>
+		</label>
+		<%= password_field_tag(:confirmpassword,"") %><br/>
+		<br>
+		<%= submit_tag("Submit",  :value => "Submit", :class => "btn btn-primary" ) %>
+			
+		
+		<br>
+		<br>
+		
+		<% end %>
+		
+		
+		</fieldset>
+		
+		
+	</div>
+</div>
+
+	
+</body>
+</html>s

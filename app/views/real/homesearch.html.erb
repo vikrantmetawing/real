@@ -1,0 +1,64 @@
+<html>
+<body style="margin-top: 11%;">
+
+
+	<div class="row" style="padding-right:20px;padding-left:10px;padding-top:10px;"> 
+	
+		
+		
+		
+		
+
+		<div>
+	   
+			<div id="container" style="width:630px;padding-left:20px;background-color:#FBFBEF; float: left;">
+				<div class="wellside">
+					<div class="alert">
+						<div class="page-schres">
+							<h4>
+							
+   
+								<small> <%=@s%></small> Your Saved Properties  <%=@pt%>
+
+							</h4>
+						</div>
+					</div>
+				</div>	
+				<ul class="thumbnails">
+				
+			
+				<%@t.each do |m|%>
+					<%m.each do |i|%>
+             
+					<li class="span2">
+						<div id="image1" class="thumbnail"  style="background-color:#FFFFFF;>
+							
+							<%= link_to  "" %>
+							<%= link_to image_tag("/images/Desert.jpg", :width => 225, :height => 175), :controller => "real",:action => 'listing', :id => @profile,:name => "Residential", :method => :post,:img=>i[7],:price=>i[2],:bed=>i[6],:nam=>i[1],:purpose=>i[5],:type=>i[4],:contant=>i[9],:p_id=>i[0],:click=>"saved_properties"%>
+								<div class="caption">
+									<h4><%=link_to i[1], :controller => "real", :action => "listing", :id => @profile,:name => "Residential", :method => :post,:img=>i[7],:price=>i[2],:bed=>i[6],:nam=>i[1],:purpose=>i[5],:type=>i[4],:contant=>i[9],:p_id=>i[0],:click=>"saved_properties"%></h4>
+									<p><%=truncate(i[9], :length => 25, :separator => ' ')%></p>
+									<br>
+									
+							
+							
+							
+							
+									
+									
+								</div>
+						</div>
+					</li>
+				<%end%>
+				<%end%>
+		</ul>
+		
+	
+			</div>
+		</div>
+	   
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<html>
+<head></head>
+<body style="margin-top: 11%;margin-left: 20px">
+<%=@test%>
+
+<div class="row" style="height:100%; width:700px;padding-bottom:20px">
+   <div class="span5" style="float:left;height:1003px; width:520px; border: 2px solid black;">
+			<%= form_tag("/real/admin_property_view/", :method=>"post") do %>
+			
+				<fieldset style="height: 50px;width:520px; background-color: #F7F2E0; color: #000000; ">
+				<br><%= submit_tag("viewall",  :value => "viewall",:class=>"btn btn-primary") %>	
+			<% end %>
+		<%= form_tag("/real/property_add/", :method=>"post", :multipart => true) do %>
+		
+		 <fieldset style="height: 100%;width:500px; background-color: #F7F2E0; color: #000000;padding-left:20px">
+		
+		<br>
+	
+		<tab id=t1><h1>Add Properties </h1>
+		<hr>
+		
+				
+		<br>
+		<br>
+	
+		
+		<label class="control-label">
+		property Name
+		<span class="required">*</span>
+		</label>
+		<%= text_field_tag(:propertyname,"") %><br/>
+		
+		<label class="control-label">
+		Price
+		<span class="required">*</span>
+		</label>
+		<%= text_field_tag(:price,"") %><br/>
+		
+		<label class="control-label">
+		State
+		<span class="required">*</span>
+		</label>
+		<%= text_field_tag(:state,"") %><br/>
+		
+		
+		<br>
+			<%= select(:property_type, :item_type, [['Property Type', 1], ['Commercial', 2], ['Industrial', 3], ['Land', 4],['Residential', 5]], {}, :class => "myclass") %><br>
+		
+		<br>
+		<%= select(:sub_property_type, :item_type, [['Sub Property Type', 1], ['Condo', 2], ['Appartment', 3], ['Duplex', 4],['Triplex', 5]], {}, :class => "myclass") %><br>
+		
+		<br>
+		
+		<%= select(:Purpose, :item_type, [['Purpose', 1], ['Rental', 2], ['Sale', 3]], {}, :class => "myclass") %><br>
+		
+		
+		<label class="control-label">
+		Bedroom
+		<span class="required">*</span>
+		</label>
+		<%= text_field_tag(:bedroom,"") %><br/>
+		
+		
+		<label class="control-label" for="textarea">
+		Description
+		<span class="required">*</span>
+		</label>
+		<div class="controls">
+		<TEXTAREA NAME="contant" COLS=40 ROWS=5></TEXTAREA><br/>
+		
+		<p><label for="Upload_image">Select Image</label>
+		<%= file_field 'upload', 'file' %></p>
+
+		
+		<br>
+		
+		
+		<%= submit_tag("upload",  :value => "upload",:class=>"btn btn-primary") %>		
+		
+		<br>
+		<br>
+		
+		
+		
+		</fieldset>
+		<% end %>
+		
+	</div>
+</div>
+
+	
+</body>
+</html>

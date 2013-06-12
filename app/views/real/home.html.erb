@@ -1,0 +1,258 @@
+<html>
+<body style="margin-top: 11%;">
+	
+	
+	
+	
+	<!-- Modal slider_1 -->
+<div id="slider_1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Company Logo</h3>
+  </div>
+  <div class="modal-body">
+  
+  
+  	<%= form_tag({ controller:'real', :action => 'admin_home'}, :multipart => true) do %>
+		
+			<br>
+			<br>
+			<br>
+			<br>
+	
+			<tab id=t1><h1>Home details  <small>fill details to customize your store </small></h1></tab>
+			<hr>
+			<br>
+			<br>
+			<p><label for="Upload_image">Select Slider_image_1</label>
+			<%= file_field 'upload1', 'file1' %></p>
+
+			
+			<%= submit_tag("submit", :value => "slider_1", :class=>"btn btn-primary") %>
+		
+			<br>
+			<br>
+		
+		
+		
+			
+			<% end %>
+			
+			
+			
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-inverse">Save changes</button>
+  </div>
+</div>
+
+		<!-- end  Modal slider_1 -->
+	
+	
+	<!-- Modal slider_2 -->
+<div id="slider_2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Company Logo</h3>
+  </div>
+  <div class="modal-body">
+  
+  
+  	<%= form_tag({ controller:'real', :action => 'admin_home'}, :multipart => true) do %>
+		
+			<br>
+			<br>
+			<br>
+			<br>
+	
+			<tab id=t1><h1>Home details  <small>fill details to customize your store </small></h1></tab>
+			<hr>
+			<br>
+			<br>
+			<p><label for="Upload_image">Select Slider_image_2</label>
+			<%= file_field 'upload2', 'file2' %></p>
+
+			
+			<%= submit_tag("submit", :value => "slider_2", :class=>"btn btn-primary") %>
+		
+			<br>
+			<br>
+		
+		
+		
+			
+			<% end %>
+			
+			
+			
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-inverse">Save changes</button>
+  </div>
+</div>
+
+		<!-- end  Modal slider_2 -->
+	
+	
+		<!-- Modal slider_3 -->
+<div id="slider_3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Company Logo</h3>
+  </div>
+  <div class="modal-body">
+  
+  
+  	<%= form_tag({ controller:'real', :action => 'admin_home'}, :multipart => true) do %>
+		
+			<br>
+			<br>
+			<br>
+			<br>
+	
+			<tab id=t1><h1>Home details  <small>fill details to customize your store </small></h1></tab>
+			<hr>
+			<br>
+			<br>
+			<p><label for="Upload_image">Select Slider_image_3</label>
+			<%= file_field 'upload3', 'file3' %></p>
+
+			
+			<%= submit_tag("submit", :value => "slider_3", :class=>"btn btn-primary") %>
+		
+			<br>
+			<br>
+		
+		
+		
+			
+			<% end %>
+			
+			
+			
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-inverse">Save changes</button>
+  </div>
+</div>
+
+		<!-- end  Modal slider_3 -->
+	
+	
+			<div class="content">
+				<div class="container">
+					<div class="row-fluid">
+						<div class="span12">
+							<div id="myCarousel" class="carousel-property slide">
+							  
+							  <!-- Carousel items -->
+								<div class="carousel-inner">
+							<% if $mode=="edit" then %>	
+							    
+								
+								<div class="active item"><%=link_to image_tag($slider_1, :width => 1000, :height => 500)  ,'#slider_1', html_options = {:data => {:toggle => 'modal'} }%></div>
+								<div class="item"><%=link_to image_tag($slider_2, :width => 1000, :height => 500)  ,'#slider_2', html_options = {:data => {:toggle => 'modal'} }%></div>
+								<div class="item"><%=link_to image_tag($slider_3, :width => 1000, :height => 500)  ,'#slider_3', html_options = {:data => {:toggle => 'modal'} }%></div>
+								<%else%>
+								<div class="active item"><%= image_tag($slider_1, :width => 1000, :height =>500) %></div>
+							    <div class="item"><%= image_tag($slider_2, :width => 1000, :height =>500)%></div>
+							    <div class="item"><%= image_tag($slider_3, :width => 1000, :height =>500) %></div>
+								
+								<%end%>
+								
+							  </div>
+							  <!-- Carousel nav -->
+							  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+							  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		
+		
+
+	
+
+			
+			
+	 <div class="heading_featured" style= "padding-top:2%;">
+		<fieldset style="height: 40px; width: 1100px; background-color: #6E6E6E;color: #FFFFFF">
+   
+			<h4>&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon-star-empty icon-white"></i>&nbsp;Featured Properties</h4>
+		</fieldset>
+	</div>
+
+	
+	<div class="row" style="height:100%; width:100%;padding-left:1%;padding-top:1%;">
+			
+		
+		<div id="container" style="float:left;height:100%; width:70%;padding-left:2%;">
+			<fieldset style=" background-color: #6E6E6E;color: #000000;padding-top:35px;padding-left:20px;border: 2px solid black">
+		 
+			  <ul class="thumbnails">
+			  <%b=0%>
+			  <%@t.each do |i|%>
+				<%b=b+1%>
+				
+				<li class="span2">
+				   <div class="thumbnail"  style="background-color:#FFFFFF;>
+					  
+					   <%= link_to image_tag(i[7],:width => 250, :height => 150), :controller => "real",:action => 'listing', :id => @profile,:name => "Residential", :method => :put,:img=>i[7],:price=>i[2],:bed=>i[6],:nam=>i[1],:purpose=>i[5],:type=>i[4],:contant=>i[9],:p_id=>i[0]%>
+						<div class="caption">
+							<h4><%=link_to i[1], :controller => "real",  :action => "listing", :id => @profile,:name => "Residential", :method => :put,:img=>i[7],:price=>i[2],:bed=>i[6],:nam=>i[1],:purpose=>i[5],:type=>i[4],:contant=>i[9],:p_id=>i[0]%></h4>
+							<p><%=truncate(i[9], :length => 25, :separator => ' ')%></p>
+																				   
+						</div>
+				   </div> 
+				</li>
+				<%break if b==4%>
+			<%end%>
+			  
+
+			</ul>
+			</fieldset>
+
+		</div>
+		
+		<div  style="float:right;height:100%; width:27%;">
+	
+			<%= form_tag("/real/search/", :method=>"post") do %>
+			<fieldset style=" background-color: #6E6E6E;height: 250px color: #000080; text-align: center;border: 2px solid black">
+
+			<br>
+			<br>
+			
+			<p><font size="2" color=#FFFFFF>
+			<i style="padding-right:10px;margin-top:3px"class="icon-search"></i>
+			
+			
+			Browse Properties
+			</font></p>
+			
+		
+			<hr><%= text_field_tag(:state,"State") %><br/>  
+  
+			<%= text_field_tag(:i,"Property_ID") %><br/>
+			<%= select(:price, :item_type, [["Price Range ", 1],["$100k-$300", 2], ["$300k-$600", 3], ["$600k-$900", 4], ["$900+", 5]], {}, :class => "myclass") %><br>	
+					<%= select(:bed_room, :item_type, [['Bed Room ', 1], ['1', 2], ['2', 3],  ['3', 4],['4+', 5]], {}, :class => "myclass") %><br>			
+					<%= select(:property_type, :item_type, [['Property Type', 1], ['Commercial', 2], ['Industrial', 3], ['Land', 4],['Residential', 5]], {}, :class => "myclass") %><br>
+					
+				<%= submit_tag("submit",:value =>"Submit", :class=>"btn btn-success") %><br>
+			
+			<font size="2" color="white"> Know exactly what you want? <br>
+			Try our <%=link_to "Advance Search", :controller => "real", :action => "search", :name => "search", :id => @profile%></font>
+			<br>
+			<br>
+			</fieldset>
+			<% end %>
+		
+	   </div>
+	</div>  
+</body>
+
+</html>

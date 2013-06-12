@@ -1,0 +1,42 @@
+<html>
+<head></head>
+<body style="margin-top: 11%;margin-left: 10px">
+
+<div class="row" style="height:1280px; width:1000px;">
+<div class="span5" style="float:left;height:1200px; width:700px";>
+<table class="table table-striped" style="width:300px; background-color:#A9A9F5; color: #000000; border: 2px solid black;float:right;"> 
+				<tr class="success">
+					<td>Features</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr class="warning">
+					
+					<td>property_id</td>
+					<td>Property Name</td>
+					<td>Property Type</td>
+					<td>Purpose</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<%@t.each do |i|%>
+				<tr >
+					<td><%=i[0]%></td>
+					<td><%=i[1]%></td>
+					<td><%=i[4]%></td>
+					<td><%=i[5]%></td>
+				<td><%=link_to "Delete", :controller => "real", :action => "property_delete", :id => @profile,:name => "Residential", :method => :post,:id=>i[0]%></td>
+				<td><%=link_to "Edit", :controller => "real", :action => "property_edit", :id => @profile,:name => "Residential", :method => :post,:id=>i[0]%></td>
+				</tr>
+				
+				<%end%>
+				
+			</table>
+			
+	</div>
+	</div>
+</body>
+</html>

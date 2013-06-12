@@ -1,0 +1,140 @@
+<html>
+<head></head>
+<body style="margin-top: 11%;margin-left: 20px">
+
+
+<div class="row" style="height:2100px; width:900px;padding-bottom:20px">
+   <div class="span5" style="float:left;height:2100px; width:900px;">
+   
+   
+		<%= form_tag({ controller:$master_user_name, :action => 'adminhome'}, :multipart => true) do %>	
+		
+		
+			<%@t.each do |i|%>
+		 <fieldset style="height: 2100px;width:900px; background-color: #F7F2E0; color: #000000; border: 2px solid black;padding-left:20px">
+		<br>
+		<br>
+		<br>
+		<br>
+		<tab id=t1><center><h1>Edit Home Page Details </h1></center>
+		<hr>
+		
+				
+		<br>
+		<br>
+		 <label class="control-label">
+		Company Name
+		
+		</label>
+		<%= text_field_tag(:companyname,i.c_name, readonly: false ) %><br/>
+		
+		<label class="control-label">
+		Address
+		
+		</label>
+		<%= text_field_tag(:address,i.address) %><br/>
+		
+		<label class="control-label">
+		Phone
+		
+		</label>
+		<%= text_field_tag(:phone,i.phone) %><br/>
+		
+		<p><label class="control-label">
+		Logo
+		
+		</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%= image_tag(i.logo, :width => 200, :height =>200) %></p>
+		
+		<p><label for="Upload_image">Edit Logo</label>
+		<%= file_field 'upload', 'file' %></p>
+	
+		
+		<br/>
+		
+		<p><label class="control-label">
+		Slider Image 1
+		
+		</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%= image_tag(i.slider_img_1, :width => 200, :height =>200) %></p>
+		
+		<p><label for="Upload_image1">Edit Logo</label>
+		<%= file_field 'upload1', 'file1'%></p>
+	
+		
+		<br/>
+		
+		<p><label class="control-label">
+		Slider Image 2
+		
+		</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%= image_tag(i.slider_img_2, :width => 200, :height =>200) %></p>
+		
+		<p><label for="Upload_image2">Edit Logo</label>
+		<%= file_field 'upload2', 'file2' %></p>
+	
+		
+		<br/>
+		
+		<p><label class="control-label">
+		Slider Image 3
+		
+		</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%= image_tag(i.slider_3, :width => 200, :height =>200) %></p>
+		
+		<p><label for="Upload_image3">Edit Logo</label>
+		<%= file_field 'upload3', 'file3' %></p>
+	
+		
+		<br/>
+		
+		<p><label class="control-label">
+		Company Image 1
+		
+		</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%= image_tag(i.c_img_1, :width => 200, :height =>200) %></p>
+		
+		<p><label for="Upload_image4">Edit Logo</label>
+		<%= file_field 'upload4', 'file4' %></p>
+	
+		
+		<br/>
+		
+		<p><label class="control-label">
+		Company Image 2
+		
+		</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<%= image_tag(i.c_img_2, :width => 200, :height =>200) %></p>
+		
+		<p><label for="Upload_image5">Edit Logo</label>
+		<%= file_field 'upload5', 'file5' %></p>
+	
+		
+		<br/>
+		
+		
+		<br>
+		
+		<%end%>
+		<%= submit_tag("Save",  :value => "Save",:class=>"btn btn-primary") %>		
+		
+		<br>
+		<br>
+		
+		
+		
+		</fieldset>
+		<% end %>
+		
+	</div>
+</div>
+
+	
+</body>
+</html>

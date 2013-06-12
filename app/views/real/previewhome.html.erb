@@ -1,0 +1,101 @@
+<html>
+<body style="margin-top: 11%">
+
+
+			<%= form_tag({ controller:$master_user_name, :action => 'previewhome'}, :multipart => true) do %>
+			
+			<%= submit_tag("Save", :value => "Save", :class=>"btn btn-primary") %>
+			<span style="font-size:23px; padding:10px; float:right;" class="label label-primary"><%=link_to "Cancle", :controller => $master_user_name, :action => "admin_home", :id => @profile,:name => "deleteproperty", :method => :post%></span>    
+			<%end%>
+			<%= form_tag({ controller:$master_user_name, :action => 'admin_home'}, :multipart => true) do %>
+			
+			<%= submit_tag("Cancle", :value => "cancle", :class=>"btn btn-primary") %>
+			<%end%>
+			
+			<div class="content">
+				<div class="container">
+					<div class="row-fluid">
+						<div class="span12">
+							<div id="myCarousel" class="carousel-property slide">
+							  
+							  <!-- Carousel items -->
+								<div class="carousel-inner">
+							    <div class="active item"><%= image_tag($slider_1, :width => 1000, :height =>500) %></div>
+							    <div class="item"><%= image_tag($slider_2, :width => 1000, :height =>500) %></div>
+							    <div class="item"><%= image_tag($slider_3, :width => 1000, :height =>500) %></div>
+							  </div>
+							  <!-- Carousel nav -->
+							  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+							  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	
+							
+		
+		
+			
+			
+	 <div class="heading_featured" style= "padding-top:2%;">
+		<fieldset style="height: 40px; width: 1100px; background-color: #6E6E6E;color: #FFFFFF">
+   
+			<h4>&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon-star-empty icon-white"></i>&nbsp;Featured Properties</h4>
+		</fieldset>
+	</div>
+
+	
+	<div class="row" style="height:100%; width:100%;padding-left:1%;padding-top:1%;">
+			
+		
+		<div id="container" style="float:left;height:100%; width:70%;padding-left:2%;">
+			<fieldset style=" background-color: #6E6E6E;color: #000000;padding-top:35px;padding-left:20px;border: 2px solid black">
+		 
+			 
+			</fieldset>
+
+		</div>
+		
+		<div  style="float:right;height:100%; width:27%;">
+	
+		
+			<%= form_tag("/real/search/", :method=>"post") do %>
+			<fieldset style=" background-color: #6E6E6E;height: 250px color: #000080; text-align: center;border: 2px solid black">
+
+			<br>
+			<br>
+			
+			<p><font size="2" color=#FFFFFF>
+			<i style="padding-right:10px;margin-top:3px"class="icon-search"></i>
+			
+			
+			Browse Properties
+			</font></p>
+			
+		
+			<hr><%= text_field_tag(:id,"State") %><br/>
+  
+			<%= text_field_tag(:i,"property_id") %><br/>
+			<%= select(:price, :item_type1, [['Price', 1],['$100k-$300k', 2], ['$300k-$600k', 3], ['$600k-$900k', 4], ['$900+', 5]], {}, :class => "myclass") %> <br>
+			 
+			 <%= select(:bed_room, :item_type2, [['Bed Room', 1], ['1', 2], ['2', 3], ['3', 4], ['4', 5],['4+', 6]], {}, :class => "myclass") %><br/>
+			 <%= select(:property_type, :item_type3, [['Property Type', 1], ['commercial', 2], ['industrial', 3], ['land', 4], ['residential', 5]], {}, :class => "myclass") %><br/>
+				
+			<%= submit_tag("submit",  :value => "submit",:class=>"btn btn-medium btn btn-info") %><br><br>
+			<font size="2" color="white"> Know exactly what you want? <br>
+			Try our <%=link_to "Advance Search", :controller => "real", :action => "search", :name => "search", :id => @profile%></font>
+			<br>
+			<br>
+			</fieldset>
+			<% end %>
+		
+	   </div>
+	</div>
+			
+
+ 
+ 
+ 
+ 

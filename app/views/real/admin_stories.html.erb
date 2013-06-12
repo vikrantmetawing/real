@@ -1,0 +1,52 @@
+ 
+  <html>
+  <head>
+  </head>
+	<body style="margin-top: 11%;">
+<br><br>
+	<div class="row" style="height:70%; width:100%;">
+   <div style="float:left;height:100%; width:67%;padding-left:3%;">
+   
+	
+	<%= form_tag({ controller:'real', :action => 'admin_stories'}, :multipart => true) do %>
+		
+		 <fieldset style="height: 100%;width:100%; background-color: ; color: #000000; border: 2px solid black;padding-left:20px;background-image:
+		url('/images/back1.jpg');">
+		
+		<br>
+	<br><br>
+		<tab id=t1><h1>Stories page details <br/>  <small>customize your contact page </small></h1></tab>
+		<hr>
+		
+		<br>
+		
+		
+		<label class="control-label" for="textarea">
+		Contant 
+		<span class="required">*</span>
+		</label>
+		<div class="controls">
+		<TEXTAREA NAME="contant" COLS=40 ROWS=5></TEXTAREA>
+		
+		
+		
+		
+		
+		</div>
+		<%= submit_tag("upload", :value => "upload", :class=>"btn btn-primary") %>
+		 
+		<br>
+		<br>
+		
+		
+		
+		</fieldset>
+		<% end %>
+		<%=@path%>
+	</div>
+
+	
+</div>
+</body>
+</html>
+ 
