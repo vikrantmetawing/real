@@ -439,6 +439,10 @@ class RealController < ApplicationController
 		@b=MContact.all	
 		@c=MStories.all
 		@d=MasterUsers.all
+		connection = ActiveRecord::Base.connection();
+   		
+		@e= User.find_by_sql("select * from properties_1")
+		
 		end
 		def user_validate
 		
