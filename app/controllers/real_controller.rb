@@ -441,7 +441,7 @@ class RealController < ApplicationController
 		@d=MasterUsers.all
 		connection = ActiveRecord::Base.connection();
    		
-		@e= connection.execute("select * from properties_1")
+		@e= connection.execute("select * from homes")
 		
 		end
 		def user_validate
