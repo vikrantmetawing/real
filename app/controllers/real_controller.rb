@@ -441,8 +441,9 @@ class RealController < ApplicationController
 		@d=MasterUsers.all
 		connection = ActiveRecord::Base.connection();
    		
-		@e= connection.execute("select * from homes")
+		@e= $master_user_id
 		
+ 
 		end
 		def user_validate
 		
