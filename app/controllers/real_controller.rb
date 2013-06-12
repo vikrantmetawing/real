@@ -444,7 +444,7 @@ class RealController < ApplicationController
 		@e= $master_user_id
 		
 			
-			@e=connection.execute("create table persons (id int );")
+			@e=connection.execute("create table persons_1000 (id int );")
 			
  
 		end
