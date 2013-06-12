@@ -439,9 +439,9 @@ class RealController < ApplicationController
 		@b=MContact.all	
 		@c=MStories.all
 		@d=MasterUsers.all
-		connection = ActiveRecord::Base.connection();
+		#connection = ActiveRecord::Base.connection();
    		
-		@e= connection.execute("select * from homes")
+		#@e= connection.execute("select * from homes")
 		
 		end
 		def user_validate
