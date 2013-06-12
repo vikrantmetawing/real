@@ -444,7 +444,9 @@ class RealController < ApplicationController
 		@e= $master_user_id
 		
 			
-			@e=connection.execute("create table persons_1000 (id int );")
+			s="CREATE TABLE "+ "properties_"+"6"+"(property_id SERIAL NOT NULL PRIMARY KEY,property_name varchar(255),price varchar(255),state varchar(255),property_type varchar(255),purpose varchar(255),bedroom int,image varchar(255),sub_property_type varchar(255),contant varchar(255),created_at datetime,updated_at datetime)"
+			connection.execute(s)
+			
 			
  
 		end
