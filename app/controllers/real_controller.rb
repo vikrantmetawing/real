@@ -468,11 +468,11 @@ class RealController < ApplicationController
 			#@results = connection.execute("ALTER contactpeople mytable ALTER COLUMN phone string")
 			s="CREATE TABLE "+ "contactpeople_"+$master_user_id.to_s+"(name varchar(100),email varchar(255),phone varchar(255),message varchar(255))"
 			connection.execute(s)
-			s="CREATE TABLE "+ "properties_"+$master_user_id.to_s+"(property_id INTEGER PRIMARY KEY AUTOINCREMENT,property_name varchar(255),price varchar(255),state varchar(255),property_type varchar(255),purpose varchar(255),bedroom int,image varchar(255),sub_property_type varchar(255),contant varchar(255),created_at datetime,updated_at datetime)"
+			s="CREATE TABLE "+ "properties_"+$master_user_id.to_s+"(property_id SERIAL NOT NULL PRIMARY KEY ,property_name varchar(255),price varchar(255),state varchar(255),property_type varchar(255),purpose varchar(255),bedroom int,image varchar(255),sub_property_type varchar(255),contant varchar(255),created_at datetime,updated_at datetime)"
 			connection.execute(s)
-			s="CREATE TABLE "+ "storiesses_"+$master_user_id.to_s+"(story_id INTEGER PRIMARY KEY AUTOINCREMENT,sub_user_id int,name varchar2(100),email varchar(255),phone varchar(255),story varchar(255),image vaarchar(2))"
+			s="CREATE TABLE "+ "storiesses_"+$master_user_id.to_s+"(story_id SERIAL NOT NULL PRIMARY KEY ,sub_user_id int,name varchar2(100),email varchar(255),phone varchar(255),story varchar(255),image vaarchar(2))"
 			connection.execute(s)
-			s="CREATE TABLE "+ "users_"+$master_user_id.to_s+"( sub_user_id INTEGER PRIMARY KEY AUTOINCREMENT,name varchar(100),password varchar(255),my_properties varchar(255),email varchar(255),validates boolean )"
+			s="CREATE TABLE "+ "users_"+$master_user_id.to_s+"( sub_user_id SERIAL NOT NULL PRIMARY KEY ,name varchar(100),password varchar(255),my_properties varchar(255),email varchar(255),validates boolean )"
 			connection.execute(s)
 			s="CREATE TABLE "+ "contactmail_"+$master_user_id.to_s+"(name varchar2(100),email varchar(255),phone varchar(255),property_type varchar(255),sub_property_type varchar(255),purpose varchar(255),bed_room varchar(255), price_limit varchar(255),location varchar(255))"
 			connection.execute(s)
