@@ -442,8 +442,8 @@ class RealController < ApplicationController
 		connection = ActiveRecord::Base.connection();
    		
 		@e= $master_user_id
-		s="CREATE TABLE "+ "contactpeople_"+"10"+"(name varchar2(100),email varchar(255),phone varchar(255),message varchar(255))"
-			connection.execute(s)
+		
+			connection.execute("select * from homes")
 			
  
 		end
