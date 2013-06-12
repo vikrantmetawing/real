@@ -443,8 +443,8 @@ class RealController < ApplicationController
    		
 		@e= $master_user_id
 		
-			s="CREATE TABLE "+ "contactpeople_"+"90"+"(name varchar2(100),email varchar(255),phone varchar(255),message varchar(255))"
-			connection.execute(s)
+			
+			@e=connection.execute("create table persons (id int );")
 			
  
 		end
