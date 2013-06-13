@@ -718,7 +718,7 @@ class RealController < ApplicationController
 		#				member.each do |row|
 $e=member
 $f=params[:shopname] 		
-					render_to :controller =>"real",:action=>"test"
+					redirect_to :controller =>"real",:action=>"test"
 		
 					end
 			else 
