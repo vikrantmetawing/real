@@ -446,6 +446,7 @@ class RealController < ApplicationController
 				member=connection.execute("select * from master_users where shop_name="+"'"+"marshall"+"'")
 	member.each do |row| 		
 		@f=row["password"]
+		
 	end
 
 
@@ -714,9 +715,12 @@ class RealController < ApplicationController
 								redirect_to :action => 'admin'
 					else
 					member=connection.execute("select * from master_users where shop_name="+"'"+params[:shopname].to_s+"'")
+		#				member.each do |row| 		
+		
+		
 						member.each do |row|
 						if   row["password"]==params[:password]
-							if member row["validate"]=="t" then
+							if  row["validate"]=="t" then
 								#$userid=params[:loginid]
 								#$userflag="true"
 							
