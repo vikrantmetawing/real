@@ -710,17 +710,38 @@ class RealController < ApplicationController
 			if params[:commit]== "login" then
 				connection = ActiveRecord::Base.connection();
 				member=connection.execute("select * from master_users where shop_name="+"'"+params[:shopname].to_s+"'")
-					if 	member[0]==nil  then
+				if 	member[0]==nil  then
 					flash[:notice] = "#{'There is no shop with this name'}"					
 								redirect_to :action => 'admin'
-					else
+				else
 					member=connection.execute("select * from master_users where shop_name="+"'"+params[:shopname].to_s+"'")
-		#				member.each do |row|
-$e=member
-$f=params[:shopname] 		
-					redirect_to :controller =>"real",:action=>"test"
+					member.each do |row|
+						if   row["password"]==params[:password]
+							if  row["validate"]=="t" then
+								#$userid=params[:loginid]
+								#$userflag="true"
+								$mode="edit"
+								$masterflag="true"
+								$master_user_id=row["master_user_id"]
+								 redirect_to :controller=>row["shop_name"], :action => 'adminhome'
+								#redirect_to :action => 'adminhome'
+								
+							else
+								flash[:notice] = "#{'you need to varify your Email id before a'}"					
+								#redirect_to :action => 'admin'
+							 redirect_to :controller=>$master_user_name, :action => 'admin'
+							end
+						else
+							flash[:notice] = "#{'Invalid Password details'}"					
+							#redirect_to :action => 'admin'
+							 redirect_to :controller=>$master_user_name, :action => 'admin'
+					
+					
+						end
+					end		
+				end
 		
-					end
+				
 			else 
 			 render :layout => 'front'
 			
