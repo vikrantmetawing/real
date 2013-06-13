@@ -713,14 +713,15 @@ class RealController < ApplicationController
 								redirect_to :action => 'admin'
 					else
 					member=connection.execute("select * from master_users where shop_name="+"'"+params[:shopname].to_s+"'")
-						if   member[0][2]==params[:password]
-							if member[0][4]=="t" then
+						member.each do |row|
+						if   row["password"]==params[:password]
+							if member row["validate"]=="t" then
 								#$userid=params[:loginid]
 								#$userflag="true"
 							
 								$masterflag="true"
-								$master_user_id=member[0][0]
-								 redirect_to :controller=>member[0][1], :action => 'adminhome'
+								$master_user_id=row["master_user_id"]
+								 redirect_to :controller=>row["shop-name"], :action => 'adminhome'
 								#redirect_to :action => 'adminhome'
 								$mode="edit"
 							else
@@ -734,7 +735,7 @@ class RealController < ApplicationController
 							 redirect_to :controller=>$master_user_name, :action => 'admin'
 						end
 					
-					
+						end
 					end		
 			else 
 			 render :layout => 'front'
