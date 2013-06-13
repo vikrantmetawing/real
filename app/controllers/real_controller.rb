@@ -443,10 +443,14 @@ class RealController < ApplicationController
    		
 		@e= $master_user_id
 		connection = ActiveRecord::Base.connection();
-			#	member[]=connection.execute("select * from master_users where shop_name="+"'"+params[:shopname].to_s+"'")
-		#@f=member
-@f = Home.find_by_sql("SELECT *  FROM master_users ")
- 
+				member=connection.execute("select * from master_users)
+		@f=member
+
+
+
+
+
+
 		end
 		def user_validate
 		

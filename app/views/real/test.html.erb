@@ -4,4 +4,8 @@
 <%=debug(@c)%>
 <%=debug(@d)%>
 <%=debug(@e) %>
-<%= @f[0] %>
+<%= 
+@f.each do |row| %>
+  <%= row%>
+  
+<%end%>
