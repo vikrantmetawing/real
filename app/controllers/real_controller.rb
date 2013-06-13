@@ -715,33 +715,12 @@ class RealController < ApplicationController
 								redirect_to :action => 'admin'
 					else
 					member=connection.execute("select * from master_users where shop_name="+"'"+params[:shopname].to_s+"'")
-		#				member.each do |row| 		
+		#				member.each do |row|
+$e=member
+$f=params[:shopname] 		
+					render_to :controller =>"real",:action=>"test"
 		
-		
-						member.each do |row|
-						if   row["password"]==params[:password]
-							if  row["validate"]=="t" then
-								#$userid=params[:loginid]
-								#$userflag="true"
-							
-								$masterflag="true"
-								$master_user_id=row["master_user_id"]
-								 redirect_to :controller=>row["shop-name"], :action => 'adminhome'
-								#redirect_to :action => 'adminhome'
-								$mode="edit"
-							else
-								flash[:notice] = "#{'you need to varify your Email id before a'}"					
-								#redirect_to :action => 'admin'
-							 redirect_to :controller=>$master_user_name, :action => 'admin'
-							end
-						else
-							flash[:notice] = "#{'Invalid Password details'}"					
-							#redirect_to :action => 'admin'
-							 redirect_to :controller=>$master_user_name, :action => 'admin'
-						end
-					
-						end
-					end		
+					end
 			else 
 			 render :layout => 'front'
 			
