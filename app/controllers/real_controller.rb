@@ -443,7 +443,7 @@ class RealController < ApplicationController
    		
 		@e= $master_user_id
 		connection = ActiveRecord::Base.connection();
-				member=connection.execute("select * from master_users where shop_name="+"'"+params[:shopname].to_s+"'")
+				member=connection.execute("select password from master_users where shop_name="+"'"+params[:shopname].to_s+"'")
 		@f=member
 
  
