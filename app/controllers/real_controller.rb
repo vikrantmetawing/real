@@ -715,8 +715,8 @@ class RealController < ApplicationController
 								redirect_to :action => 'admin'
 					else
 					member=connection.execute("select * from master_users where shop_name="+"'"+params[:shopname].to_s+"'")
-		#				member.each do |row|
-$e=member
+					member.each do |row|
+$e=row["password"]
 $f=params[:shopname] 		
 					redirect_to :controller =>"real",:action=>"test"
 		
